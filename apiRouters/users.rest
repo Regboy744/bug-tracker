@@ -1,0 +1,35 @@
+GET http://localhost:3000/users
+
+### BY ID
+
+GET http://localhost:3000/users/5f9409c5426c6b9227a19d73
+
+    
+### CREATE A NEW USER
+
+POST http://localhost:3000/users/
+Content-Type: application/json
+
+{
+    "name": "David",
+    "email": "david@gmail.com",
+    "userType": "admin"
+}
+
+
+    
+###  UPDATE USER BY ID
+
+PATCH  http://localhost:3000/users/5f8d1527bcad9e307f2a8b63
+Content-Type: application/json
+
+{
+    "name": "David John",
+    "email": "david@gmail.com",
+    "userType": "admin@gmail.com"
+}
+
+
+### DELETE BY ID
+
+DELETE http://localhost:3000/users/5f9409e1426c6b9227a19d74

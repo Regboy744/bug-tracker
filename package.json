@@ -1,0 +1,16 @@
+{
+	"name": "cctrestapi",
+	"version": "1.0.0",
+	"description": "cct assessment ",
+	"main": "server.js",
+	"scripts": {
+		"devStart": "nodemon server.js"
+	},
+	"author": "Gilberto Junior 2020090",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.17.1",
+		"mongoose": "^5.10.10",
+		"nodemon": "^2.0.6"
+	}
+}

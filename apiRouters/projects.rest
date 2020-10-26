@@ -1,33 +1,30 @@
+//GET ALL PROJECTS
 GET http://localhost:3000/projects
 
-### FIND A PROJECT BY ID
 
-GET http://localhost:3000/projects/5f9405c2165543cf3028305f
+
+### GET INDIVIDUAL PROJECTS
+GET http://localhost:3000/projects/BOOK
 
     
-### CREATE A NEW PROJECT
-
+### ADD A NEW PROJECT INDIVIDUALLY
 POST http://localhost:3000/projects/
 Content-Type: application/json
 
 {
     "slug": "BUG",
-	"name": "BUG SOFTWARE MANAGEMENT",
+	"name": "BUG SOFTWARE MANAGEMENT BUG",
 	"descripion": "This project will help me to record all bugs I come across and then use it to learn more about programming laguange"
 }
 
 
 ### UPDATE A PROJECT BY ID
-
-PATCH  http://localhost:3000/projects/5f9405c2165543cf3028305f
+PATCH  http://localhost:3000/projects/BUG
 Content-Type: application/json
+// It is not possible to change the slug because it must be unic
 
 {
-    "slug": "BUG",
-	"name": "BUG SOFTWARE MANAGEMENT",
-	"descripion": "This project will help me to record all bugs I come across and then use it to learn more about programming laguange"
+    "name": "BUssssG BEST SOFTWARE MANAGEMENT",
+	"descripion": " project will help me to record all bugs I come across and then use it to learn more about programming laguange"
 }
 
-### DELET A PROJECT BY ID
-
-DELETE http://localhost:3000/projects/5f940f6fdeb01482e7cf825f

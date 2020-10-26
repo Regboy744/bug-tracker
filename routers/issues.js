@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Issues = require("../models/issues");
+const Project = require("../models/projects");
 
-/* 
+/*
 
          ERRORS CODE
 
@@ -15,54 +16,108 @@ const Issues = require("../models/issues");
 
 */
 
-//Create a new project **********************************************************************************************
+//Create a new Issue **********************************************************************************************
 
-router.post("/", async (req, res) => {
-	const newIssue = Issues({
-		issueNumber: req.body.issueNumber,
-		text: req.body.text,
-		description: req.body.description,
-		status: req.body.status,
-		// project_id = {type: mongoose.SchemaTypes.ObjectId, ref: "User"}
-	});
+router.post("/project/:slug", async (req, res) => {
+	const project = await Project.find({ slug: req.params.slug });
+	let count = countIssues(req.params.slug);
 	try {
-		const issue = await newIssue.save();
-		res.status(201).json(issue);
+		if (project != null) {
+			const newIssue = Issues({
+				issueNumber: req.params.slug + "_" + ((await count) + 1),
+				text: req.body.text,
+				description: req.body.description,
+				status: req.body.status,
+				projectId: req.params.slug,
+			});
+			const issue = await newIssue.save();
+			res.status(201).json(issue);
+		} else {
+			res.status(400).json({ message: "Project does not exist" });
+		}
 	} catch (error) {
-		res.status(400).json({ message: err.message });
+		res.status(400).json({ message: error.message });
 	}
 });
 
-//Get all ***********************************************************************************************************
+//Update Issue **********************************************************************************************
+
+router.patch("/:issueNumber", getIssue, async (req, res) => {
+	// First thing check if the req exists
+	if (req.body.status != null) {
+		res.issue.status = req.body.status;
+	}
+	console.log(req.body.status);
+	try {
+		const updateIssue = await res.issue.save();
+		res.json(updateIssue);
+	} catch (error) {
+		Response.status(400);
+	}
+});
+
+//Get all *********************************************************************************************************
 
 router.get("/", async (req, res) => {
 	try {
-		const issue = await Issues.find();
+		const issue = await Issues.find({});
 		res.json(issue);
 	} catch (error) {
-		res.status(500).json({ message: err.message });
+		res.status(500).json({ message: error.message });
 	}
 });
 
-// Get one project by its ID **************************************************************************************
+// Count how maany issues exists in each project base on the project ID (BOOK/BUG)
 
-router.get("/:id", getIssue, (req, res) => {
-	res.json(res.issue.issueNumber);
+async function countIssues(projectId) {
+	const countIssue = await Issues.find({ projectId });
+	const sum = countIssue.length;
+	console.log(sum);
+	return sum;
+}
+
+// Get one ISSUE by its ID **************************************************************************************
+
+router.get("/:issueNumber", async (req, res) => {
+	const issue = await Issues.findOne({ issueNumber: req.params.issueNumber });
+	res.json(issue);
 });
 
-// Create a comment  **********************************************************************************************
+//Get All issues for a project ************************************************************************************
 
-router.get("/:id", getIssue, (req, res) => {
-	if (req.body.iss) {
+router.get("/projects/:projectId", async (req, res) => {
+	const issuesQuery = await Issues.find({ projectId: req.params.projectId });
+	res.json(issuesQuery);
+});
+
+//Get All comments for a issue ************************************************************************************
+
+router.get("/comments/:issueNumber", async (req, res) => {
+	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
+	res.json(issuesQuery.comments);
+});
+
+//Get a especific comment for a issue ************************************************************************************
+
+router.get("/:issueNumber/comments/:commentId", async (req, res) => {
+	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
+	let comment;
+	for (let i = 0; i < issuesQuery.comments.length; i++) {
+		const commentId = issuesQuery.comments[i]._id;
+
+		if (commentId == req.params.commentId) {
+			comment = issuesQuery.comments[i];
+		}
 	}
+	res.json(comment);
 });
 
-// It gets the id individualy and check if it exists ***************************************************************
+// It gets the id individualy and check if it exists **************************************************************
 
 async function getIssue(req, res, next) {
 	let issue;
 	try {
-		issue = await Issues.findById(req.params.id);
+		issue = await Issues.findOne({ issueNumber: req.params.issueNumber });
 		if (issue == null) {
 			return res.status(404).json({ message: err.message });
 		}

@@ -44,8 +44,9 @@ router.get("/", async (req, res) => {
 
 // Get one user by its ID **************************************************************************************
 
-router.get("/:id", getUsers, (req, res) => {
-	res.json(res.user);
+router.get("/:email", async (req, res) => {
+	const user = await Users.findOne({ email: req.params.email });
+	res.json(user);
 });
 
 // Update a User ***********************************************************************************************

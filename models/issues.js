@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
-
-const commentSchema = new mongoose.Schema({
-	comment: String,
-});
+const commentSchema = require("./comment").schema;
+const projectSchema = require("./projects").schema;
 
 const issueSchema = new mongoose.Schema({
-	issueNumber: String,
+	issueNumber: {},
 	text: String,
 	description: String,
 	status: String,
-	// project_id = [commentSchema]
+	projectId: [{ type: mongoose.SchemaTypes.Mixed, ref: projectSchema }],
+	comments: [commentSchema],
 });
 
 module.exports = mongoose.model("Issue", issueSchema);

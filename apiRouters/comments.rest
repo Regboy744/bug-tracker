@@ -1,0 +1,18 @@
+GET http://localhost:3000/comments
+
+### BY ID
+
+GET http://localhost:3000/comments/
+
+
+###  CREATE A NEW COMMENT 
+
+POST http://localhost:3000/comments/BUG_1
+Content-Type: application/json
+
+{
+	"comment":"Novo asdfasdfadsf",
+	"author":"carvalho.ie18@gmail.com"
+}
+
+

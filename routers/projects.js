@@ -43,16 +43,16 @@ router.get("/", async (req, res) => {
 
 // Get one project by its ID **************************************************************************************
 
-router.get("/:id", getProjects, (req, res) => {
-	res.json(res.project);
+router.get("/:slug", async (req, res) => {
+	const project = await Projecs.findOne({ slug: req.params.slug });
+	res.json(project);
 });
 
 // Update a project ***********************************************************************************************
 
-router.patch("/:id", getProjects, async (req, res) => {
+router.patch("/:slug", getProjects, async (req, res) => {
 	// First thing check if the req exists
-	if (req.body.slug != null || req.body.name != null || req.body.descripion != null) {
-		res.project.slug = req.body.slug;
+	if (req.body.name != null || req.body.descripion != null) {
 		res.project.name = req.body.name;
 		res.project.descripion = req.body.descripion;
 	}
@@ -64,23 +64,12 @@ router.patch("/:id", getProjects, async (req, res) => {
 	}
 });
 
-// Delete a project ***********************************************************************************************
-
-router.delete("/:id", getProjects, async (req, res) => {
-	try {
-		await res.project.remove();
-		res.json({ message: "Project deleted" });
-	} catch (error) {
-		res.status(500).json({ message: err.message });
-	}
-});
-
 // It gets the id individualy and check if it exists **************************************************************
 
 async function getProjects(req, res, next) {
 	let project;
 	try {
-		project = await Projecs.findById(req.params.id);
+		project = await Projecs.findOne({ slug: req.params.slug });
 		if (project == null) {
 			return res.status(404).json({ message: err.message });
 		}

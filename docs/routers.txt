@@ -1,13 +1,37 @@
-DONE GET "/users"
-DONE GET "/users/1" -- and/or other ids
-DONE POST "/users"
-DONE GET "/projects"
-DONE GET "/projects/1" -- and/or other ids
-DONE POST "/projects"
-DONE POST "/issues"
+ROUTES
 
-GET "/proejcts/BUG1/issues" (including comments)  
-GET "/issues/" -- and/or other ids - 
-GET "/issues/1/comments" -- and/or other ids
-GET "/issues/1/comments/1" -- and/or other ids
-POST "/issues/1/comments" -- and/or other ids Get all issues for a project
+Projects
+
+DONE: Get all projects
+DONE: Get individual projects
+DONE: Add new Projects individually
+
+***********************************************************
+
+Users
+
+DONE: Get all users
+DONE: Get individual users
+DONE: Add new users individually
+
+BONUS: Hash the password/key
+
+***********************************************************
+
+Issues
+
+DONE: Get all issues (bring comments with it)
+DONE: Get individual issues
+DONE Get all issues for a project
+BONUS: Updated the status of an issue
+DONE Add new issues to a project individually
+
+***********************************************************
+
+Comments
+
+Get all comments (optional)
+Get all comments for an author (optional)
+DONE Get all comments for an issue
+DONE Get individual comments for an issue
+DONE Add new comments to an issue

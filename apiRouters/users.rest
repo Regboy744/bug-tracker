@@ -2,7 +2,7 @@ GET http://localhost:3000/users
 
 ### BY ID
 
-GET http://localhost:3000/users/5f9409c5426c6b9227a19d73
+GET http://localhost:3000/users/daniela@gmail.com
 
     
 ### CREATE A NEW USER
@@ -11,8 +11,8 @@ POST http://localhost:3000/users/
 Content-Type: application/json
 
 {
-    "name": "David",
-    "email": "david@gmail.com",
+    "name": "DaviCarolinad",
+    "email": "Carolina@gmail.com",
     "userType": "admin"
 }
 
@@ -20,7 +20,7 @@ Content-Type: application/json
     
 ###  UPDATE USER BY ID
 
-PATCH  http://localhost:3000/users/5f8d1527bcad9e307f2a8b63
+PATCH  http://localhost:3000/users/5f946ab4fa595a9bebfe54cc
 Content-Type: application/json
 
 {
@@ -32,4 +32,4 @@ Content-Type: application/json
 
 ### DELETE BY ID
 
-DELETE http://localhost:3000/users/5f9409e1426c6b9227a19d74
+DELETE http://localhost:3000/users/5f946ab4fa595a9bebfe54cc

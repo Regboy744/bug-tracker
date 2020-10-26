@@ -30,12 +30,16 @@ app.use(express.json());
 const projectsRouter = require("./routers/projects");
 const usersRouter = require("./routers/users");
 const issuesRouter = require("./routers/issues");
+const commentsRouter = require("./routers/comments");
 
-// PROJECTS
+//PROJECTS
 app.use("/projects", projectsRouter);
 
-// // USERS
+//USERS
 app.use("/users", usersRouter);
 
-// // ISSUES
+//ISSUES
 app.use("/issues", issuesRouter);
+
+//COMMENTS
+app.use("/comments", commentsRouter);

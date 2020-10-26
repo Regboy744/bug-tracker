@@ -1,19 +1,44 @@
 GET http://localhost:3000/issues
 
-### BY ID
+### BY ID 
 
-GET http://localhost:3000/issues/
+GET http://localhost:3000/issues/BUG_3
 
-    
-### 
 
-POST http://localhost:3000/issues/
+###  CREATE A NEW ISSUE
+
+POST http://localhost:3000/issues/project/BUG
 Content-Type: application/json
 
-{
-   "issueNumber": "String",
-	"text": "String",
-	"description": "String",
-	"status": "String",
+{	
+	"text": "First Issue on BUG Project",
+	"description": "Exception 12345",
+	"status": "Open"
 }
 
+
+###  UPDATED THE STATUS OF AN ISSUE
+
+PATCH  http://localhost:3000/issues/BUG_1
+Content-Type: application/json
+
+{	
+	"status": "close"
+}
+
+
+
+### GET COMMENTS BY ISSUE	 
+
+GET http://localhost:3000/issues/comments/BUG_1
+
+
+### GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID	
+
+GET http://localhost:3000/issues/BUG_1/comments/5f9703dce8690dce5b3093d2
+
+
+
+### GET ALL ISSUES FOR A PROJECT	
+
+GET http://localhost:3000/issues/projects/BUG

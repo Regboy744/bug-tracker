@@ -1,4 +1,4 @@
-# bug-tracker
+# Bug-tracker
 
 # ROUTES
 

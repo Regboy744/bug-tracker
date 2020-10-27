@@ -21,6 +21,7 @@ db.once("open", () => console.log("Connected to the database"));
 // Listener and returnes if everything is working nice
 app.listen(port, hostname, () => {
 	console.log(`Server working fine at http://${hostname}:${port}/`);
+	res.end("Hello world");
 });
 
 // Set our server to accept jason

@@ -2,7 +2,7 @@
 
 #### The main route [https://bug-trucker.herokuapp.com/](https://bug-trucker.herokuapp.com/).
 
-# Rutes
+# Rotes
 
 ## Projects
 

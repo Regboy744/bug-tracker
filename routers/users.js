@@ -84,7 +84,7 @@ router.patch("/:id", getUsers, async (req, res) => {
 	}
 });
 
-// THE CODE BELLOW CHECK IF THE USER EXIST THEN I USE IT TO UPDATE THE PROJECT ************************************
+// THE CODE BELLOW CHECK IF THE USER EXIST THEN I USE IT TO UPDATE THE USER ***************************************
 
 async function getUsers(req, res, next) {
 	let user;

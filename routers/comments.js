@@ -43,4 +43,26 @@ router.post("/:issueNumber", async (req, res, next) => {
 	}
 });
 
+// GET COMMENTS BY ISSUE ****************************************************************************************
+
+router.get("/:issueNumber", async (req, res) => {
+	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
+	res.json(issuesQuery.comments);
+});
+
+// GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID ****************************************************************
+
+router.get("/:issueNumber/:commentId", async (req, res) => {
+	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
+	let comment;
+	for (let i = 0; i < issuesQuery.comments.length; i++) {
+		const commentId = issuesQuery.comments[i]._id;
+
+		if (commentId == req.params.commentId) {
+			comment = issuesQuery.comments[i];
+		}
+	}
+	res.json(comment);
+});
+
 module.exports = router;

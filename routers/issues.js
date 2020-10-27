@@ -107,29 +107,7 @@ router.get("/projects/:projectId", async (req, res) => {
 	res.json(issuesQuery);
 });
 
-// GET COMMENTS BY ISSUE ****************************************************************************************
-
-router.get("/comments/:issueNumber", async (req, res) => {
-	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
-	res.json(issuesQuery.comments);
-});
-
-// GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID ****************************************************************
-
-router.get("/:issueNumber/comments/:commentId", async (req, res) => {
-	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
-	let comment;
-	for (let i = 0; i < issuesQuery.comments.length; i++) {
-		const commentId = issuesQuery.comments[i]._id;
-
-		if (commentId == req.params.commentId) {
-			comment = issuesQuery.comments[i];
-		}
-	}
-	res.json(comment);
-});
-
-// THE CODE BELLOW CHECK IF THE PROJECT EXIST THEN I USE IT TO UPDATE THE PROJECT *********************************
+// THE CODE BELLOW CHECK IF THE PROJECT EXIST THEN I USE IT TO UPDATE THE ISSUE *********************************
 
 async function getIssue(req, res, next) {
 	let issue;

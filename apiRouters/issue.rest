@@ -26,16 +26,11 @@ Content-Type: application/json
 	"status": "open"
 }
 
-### GET COMMENTS BY ISSUE	 
-
-GET http://localhost:3000/issues/comments/BUG_1
 
 
-### GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID	
-
-GET http://localhost:3000/issues/BUG_1/comments/5f9703dce8690dce5b3093d2
 
 
-### GET ALL ISSUES FOR A PROJECT	
+
+### GET ALL ISSUES FOR A PROJECT
 
 GET http://localhost:3000/issues/projects/BOOK

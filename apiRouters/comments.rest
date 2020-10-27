@@ -14,5 +14,5 @@ GET http://localhost:3000/comments/BUG_1
 
 ### GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID	
 
-GET http://localhost:3000/comments/BUG_1/5f978c14eec4f3955eb8690b
+GET http://localhost:3000/comments/BUG_1/5f97b529bad0309138be3314
 

@@ -8,7 +8,7 @@ GET http://localhost:3000/issues/BUG_3
 
 ###  ADD A NEW ISSUE TO A PROJECT INDIVIDUALLY
 
-POST http://localhost:3000/issues/project/BUG
+POST http://localhost:3000/issues/BUG
 Content-Type: application/json
 
 {	

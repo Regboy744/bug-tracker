@@ -63,7 +63,7 @@ router.get("/:slug", async (req, res) => {
 	res.json(project);
 });
 
-// UPDATE A PROJECT BY ID *****************************************************************************************
+// UPDATE A PROJECT BY ID (SLUG) ***********************************************************************************
 
 router.patch("/:slug", getProjects, async (req, res) => {
 	// First thing check if the req exists

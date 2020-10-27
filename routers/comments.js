@@ -20,6 +20,19 @@ const router = express.Router();
 const Issues = require("../models/issues");
 const Comment = require("../models/comment");
 
+/*
+
+         ERRORS CODE
+
+- > 500 Internal Server Error
+--> 201 Something was created
+--> 200 uccess status response
+--> 400 Bad request (Server problem)
+--> 404 Not Found
+
+
+*/
+
 // ADD A NEW  ******************************************************************************************************
 
 router.post("/:issueNumber", async (req, res, next) => {
@@ -43,14 +56,14 @@ router.post("/:issueNumber", async (req, res, next) => {
 	}
 });
 
-// GET COMMENTS BY ISSUE ****************************************************************************************
+// GET COMMENTS BY ISSUE *******************************************************************************************
 
 router.get("/:issueNumber", async (req, res) => {
 	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
 	res.json(issuesQuery.comments);
 });
 
-// GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID ****************************************************************
+// GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID *****************************************************************
 
 router.get("/:issueNumber/:commentId", async (req, res) => {
 	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });

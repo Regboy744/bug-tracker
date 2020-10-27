@@ -35,7 +35,7 @@ const Project = require("../models/projects");
 
 // ADD A NEW ISSUE TO A PROJECT INDIVIDUALLY *****************************************************************
 
-router.post("/project/:slug", async (req, res) => {
+router.post("/:slug", async (req, res) => {
 	const project = await Project.find({ slug: req.params.slug });
 	let count = countIssues(req.params.slug);
 	try {

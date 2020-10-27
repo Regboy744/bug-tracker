@@ -12,19 +12,19 @@ POST http://localhost:3000/users/
 Content-Type: application/json
 
 {
-    "name": "Adalberto",
-    "email": "adalberto@gmail.com",
-    "userType": "admin",
-    "key": "123456"
+    "name": "Gilberto",
+    "email": "gilberto@gmail.com",
+    "userType": "Admin",
+    "key": "852369"
 }
 
 ### UPDATE A USER 
 
-PATCH  http://localhost:3000/users/5f946ab4fa595a9bebfe54cc
+PATCH  http://localhost:3000/users/gilberto@gmail.com
 Content-Type: application/json
 
 {
-    "name": "David",
-    "email": "david@gmail.com",
-    "userType": "admin@gmail.com"
+    "name": "Gilberto",
+    "userType": "Admin",
+    "key": "741258"
 }

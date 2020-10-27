@@ -69,12 +69,11 @@ router.get("/:email", async (req, res) => {
 
 // UPDATE A USER **************************************************************************************************
 
-router.patch("/:id", getUsers, async (req, res) => {
+router.patch("/:email", getUsers, async (req, res) => {
 	// First thing check if the req exists
-	if (req.body.name != null || req.body.userType != null || req.body.email != null) {
+	if (req.body.name != null || req.body.userType != null) {
 		res.user.name = req.body.name;
 		res.user.userType = req.body.userType;
-		res.user.email = req.body.email;
 	}
 	try {
 		const updateUser = await res.user.save();
@@ -89,7 +88,7 @@ router.patch("/:id", getUsers, async (req, res) => {
 async function getUsers(req, res, next) {
 	let user;
 	try {
-		user = await Users.findById(req.params.id);
+		user = await Users.findOne({ email: req.params.email });
 		if (user == null) {
 			return res.status(404).json({ message: err.message });
 		}

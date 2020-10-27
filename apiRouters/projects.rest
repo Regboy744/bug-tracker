@@ -12,19 +12,19 @@ POST http://localhost:3000/projects/
 Content-Type: application/json
 
 {
-    "slug": "BUG",
-	"name": "BUG SOFTWARE MANAGEMENT BUG",
-	"descripion": "This project will help me to record all bugs I come across and then use it to learn more about programming laguange"
+    "slug": "HOTEL",
+	"name": "HOTEL SOFTWARE MANAGEMENT BUG",
+	"descripion": "Control the chaos around solving software bugs. Quickly diagnose problems in your codebase, enjoy faster development cycles and make sure users are having error free experiences."
 }
 
 
-### UPDATE A PROJECT BY ID
-PATCH  http://localhost:3000/projects/BUG
+### UPDATE A PROJECT BY ID (SLUG)
+PATCH  http://localhost:3000/projects/BOOK
 Content-Type: application/json
-// It is not possible to change the slug because it must be unic
+// It is not possible to change the slug because it must be unique
 
 {
-    "name": "BUssssG BEST SOFTWARE MANAGEMENT",
-	"descripion": " project will help me to record all bugs I come across and then use it to learn more about programming laguange"
+   "name": "BOOK SOFTWARE MANAGEMENT BUG",
+   "descripion": "Control the chaos around solving software bugs. Quickly diagnose problems in your codebase, enjoy faster development cycles and make sure users are having error free experiences."
 }
 

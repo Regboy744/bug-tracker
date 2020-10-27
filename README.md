@@ -1,6 +1,6 @@
 # Bug-tracker
 
-###### The main route [Herokuapp](https://bug-trucker.herokuapp.com/).
+###### The main route [https://bug-trucker.herokuapp.com/](https://bug-trucker.herokuapp.com/).
 
 # ROUTES
 

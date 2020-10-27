@@ -23,7 +23,7 @@ PATCH  http://localhost:3000/issues/BUG_1
 Content-Type: application/json
 
 {	
-	"status": "close"
+	"status": "open"
 }
 
 
@@ -41,4 +41,4 @@ GET http://localhost:3000/issues/BUG_1/comments/5f9703dce8690dce5b3093d2
 
 ### GET ALL ISSUES FOR A PROJECT	
 
-GET http://localhost:3000/issues/projects/BUG
+GET http://localhost:3000/issues/projects/BOOK

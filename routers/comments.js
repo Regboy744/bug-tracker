@@ -3,7 +3,7 @@ const router = express.Router();
 const Issues = require("../models/issues");
 const Comment = require("../models/comment");
 
-// Create a comment  **********************************************************************************************
+// ADD A NEW  **********************************************************************************************
 
 router.post("/:issueNumber", async (req, res, next) => {
 	try {

@@ -1,20 +1,35 @@
+/******************************************************************************************************************
+* Project           : Clouw Based Web Application CCT College Dublin
+*
+* Program name      : Bug-Tracker
+*
+* Author            : Gilberto Rodrigues de Carvalho Junior
+*
+* Register:         : 2020090
+*
+* Date created      : 26/10/2020
+*
+* Purpose           : Learn the basic foundation of a Rest API development.
+*
+* Revision History  :  V1*
+*
+|******************************************************************************************************************/
+
 const express = require("express");
 const router = express.Router();
 const Projecs = require("../models/projects");
 
 /* 
-
-         ERRORS CODE
+         ERRORS CODE STATUS
 
 - > 500 Internal Server Error
 --> 201 Something was created
 --> 200 uccess status response
 --> 400 Bad request (Server problem)
-
-
+ 
 */
 
-//Create a new project **********************************************************************************************
+//ADD A NEW PROJECT INDIVIDUALLY  *********************************************************************************
 
 router.post("/", async (req, res) => {
 	const newProjet = Projecs({
@@ -30,7 +45,7 @@ router.post("/", async (req, res) => {
 	}
 });
 
-//Get all ***********************************************************************************************************
+//GET ALL PROJECTS ************************************************************************************************
 
 router.get("/", async (req, res) => {
 	try {
@@ -41,14 +56,14 @@ router.get("/", async (req, res) => {
 	}
 });
 
-// Get one project by its ID **************************************************************************************
+// GET INDIVIDUAL PROJECTS ****************************************************************************************
 
 router.get("/:slug", async (req, res) => {
 	const project = await Projecs.findOne({ slug: req.params.slug });
 	res.json(project);
 });
 
-// Update a project ***********************************************************************************************
+// UPDATE A PROJECT BY ID *****************************************************************************************
 
 router.patch("/:slug", getProjects, async (req, res) => {
 	// First thing check if the req exists
@@ -64,7 +79,7 @@ router.patch("/:slug", getProjects, async (req, res) => {
 	}
 });
 
-// It gets the id individualy and check if it exists **************************************************************
+// THE CODE BELLOW CHECK IF THE PROJECT EXIST THEN I USE IT TO UPDATE THE PROJECT *********************************
 
 async function getProjects(req, res, next) {
 	let project;

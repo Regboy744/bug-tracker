@@ -1,9 +1,26 @@
+/******************************************************************************************************************
+* Project           : Clouw Based Web Application CCT College Dublin
+*
+* Program name      : Bug-Tracker
+*
+* Author            : Gilberto Rodrigues de Carvalho Junior
+*
+* Register:         : 2020090
+*
+* Date created      : 26/10/2020
+*
+* Purpose           : Learn the basic foundation of a Rest API development.
+*
+* Revision History  :  V1*
+*
+|******************************************************************************************************************/
+
 const express = require("express");
 const router = express.Router();
 const Issues = require("../models/issues");
 const Comment = require("../models/comment");
 
-// ADD A NEW  **********************************************************************************************
+// ADD A NEW  ******************************************************************************************************
 
 router.post("/:issueNumber", async (req, res, next) => {
 	try {

@@ -1,6 +1,3 @@
-
-GET http://localhost:3000/comments
-
 ### BY ID
 
 GET http://localhost:3000/comments/

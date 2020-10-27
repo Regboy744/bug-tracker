@@ -1,11 +1,12 @@
+### GET ALL ISSUES (WITH COMMENTS)
 GET http://localhost:3000/issues
 
-### BY ID 
+### GET INDIVIDUAL ISSUES
 
 GET http://localhost:3000/issues/BUG_3
 
 
-###  CREATE A NEW ISSUE
+###  ADD A NEW ISSUE TO A PROJECT INDIVIDUALLY
 
 POST http://localhost:3000/issues/project/BUG
 Content-Type: application/json
@@ -16,7 +17,6 @@ Content-Type: application/json
 	"status": "Open"
 }
 
-
 ###  UPDATED THE STATUS OF AN ISSUE
 
 PATCH  http://localhost:3000/issues/BUG_1
@@ -26,8 +26,6 @@ Content-Type: application/json
 	"status": "open"
 }
 
-
-
 ### GET COMMENTS BY ISSUE	 
 
 GET http://localhost:3000/issues/comments/BUG_1
@@ -36,7 +34,6 @@ GET http://localhost:3000/issues/comments/BUG_1
 ### GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID	
 
 GET http://localhost:3000/issues/BUG_1/comments/5f9703dce8690dce5b3093d2
-
 
 
 ### GET ALL ISSUES FOR A PROJECT	

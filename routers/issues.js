@@ -1,3 +1,20 @@
+/******************************************************************************************************************
+* Project           : Clouw Based Web Application CCT College Dublin
+*
+* Program name      : Bug-Tracker
+*
+* Author            : Gilberto Rodrigues de Carvalho Junior
+*
+* Register:         : 2020090
+*
+* Date created      : 26/10/2020
+*
+* Purpose           : Learn the basic foundation of a Rest API development.
+*
+* Revision History  :  V1*
+*
+|******************************************************************************************************************/
+
 const express = require("express");
 const router = express.Router();
 const Issues = require("../models/issues");
@@ -16,7 +33,7 @@ const Project = require("../models/projects");
 
 */
 
-//Create a new Issue **********************************************************************************************
+// ADD A NEW ISSUE TO A PROJECT INDIVIDUALLY *****************************************************************
 
 router.post("/project/:slug", async (req, res) => {
 	const project = await Project.find({ slug: req.params.slug });
@@ -40,7 +57,7 @@ router.post("/project/:slug", async (req, res) => {
 	}
 });
 
-//Update Issue **********************************************************************************************
+// UPDATED THE STATUS OF AN ISSUE *****************************************************************************
 
 router.patch("/:issueNumber", getIssue, async (req, res) => {
 	// First thing check if the req exists
@@ -56,7 +73,7 @@ router.patch("/:issueNumber", getIssue, async (req, res) => {
 	}
 });
 
-//Get all *********************************************************************************************************
+// GET ALL ISSUES (WITH COMMENTS) ******************************************************************************
 
 router.get("/", async (req, res) => {
 	try {
@@ -67,7 +84,7 @@ router.get("/", async (req, res) => {
 	}
 });
 
-// Count how maany issues exists in each project base on the project ID (BOOK/BUG)
+// COUNT HOW MANY ISSUES THERE ARE IN EACH PROJECT *************************************************************
 
 async function countIssues(projectId) {
 	const countIssue = await Issues.find({ projectId });
@@ -76,28 +93,28 @@ async function countIssues(projectId) {
 	return sum;
 }
 
-// Get one ISSUE by its ID **************************************************************************************
+// GET INDIVIDUAL ISSUES ***************************************************************************************
 
 router.get("/:issueNumber", async (req, res) => {
 	const issue = await Issues.findOne({ issueNumber: req.params.issueNumber });
 	res.json(issue);
 });
 
-//Get All issues for a project ************************************************************************************
+// GET ALL ISSUES FOR A PROJECT ********************************************************************************
 
 router.get("/projects/:projectId", async (req, res) => {
 	const issuesQuery = await Issues.find({ projectId: req.params.projectId });
 	res.json(issuesQuery);
 });
 
-//Get All comments for a issue ************************************************************************************
+// GET COMMENTS BY ISSUE ****************************************************************************************
 
 router.get("/comments/:issueNumber", async (req, res) => {
 	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
 	res.json(issuesQuery.comments);
 });
 
-//Get a especific comment for a issue ************************************************************************************
+// GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID ****************************************************************
 
 router.get("/:issueNumber/comments/:commentId", async (req, res) => {
 	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
@@ -112,7 +129,7 @@ router.get("/:issueNumber/comments/:commentId", async (req, res) => {
 	res.json(comment);
 });
 
-// It gets the id individualy and check if it exists **************************************************************
+// THE CODE BELLOW CHECK IF THE PROJECT EXIST THEN I USE IT TO UPDATE THE PROJECT *********************************
 
 async function getIssue(req, res, next) {
 	let issue;

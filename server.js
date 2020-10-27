@@ -26,6 +26,9 @@ app.listen(port, hostname, () => {
 // Set our server to accept jason
 app.use(express.json());
 
+// Serve our new ./public/index.html
+app.use("/", express.static("./public"));
+
 //Creating routers
 const projectsRouter = require("./routers/projects");
 const usersRouter = require("./routers/users");

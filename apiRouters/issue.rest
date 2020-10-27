@@ -8,12 +8,12 @@ GET http://localhost:3000/issues/BUG_3
 
 ###  ADD A NEW ISSUE TO A PROJECT INDIVIDUALLY
 
-POST http://localhost:3000/issues/BUG
+POST http://localhost:3000/issues/BOOK
 Content-Type: application/json
 
 {	
-	"text": "First Issue on BUG Project",
-	"description": "Exception 12345",
+	"text": "First Issue on BOOK Project",
+	"description": "Exception 54321",
 	"status": "Open"
 }
 

@@ -4,7 +4,7 @@ POST http://localhost:3000/comments/BUG_1
 Content-Type: application/json
 
 {
-	"comment":"Novo asdfasdfadsf",
+	"comment":"Error 852369 server.js file line 15",
 	"author":"carvalho.ie18@gmail.com"
 }
 

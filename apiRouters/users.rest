@@ -1,11 +1,12 @@
+### GET ALL USERS
 GET http://localhost:3000/users
 
-### BY ID
+### GET AN USER INDIVIDUALLY BY EMAIL
 
 GET http://localhost:3000/users/daniela@gmail.com
 
     
-### CREATE A NEW USER
+### ADD NEW USER INDIVIDUALLY
 
 POST http://localhost:3000/users/
 Content-Type: application/json
@@ -13,23 +14,17 @@ Content-Type: application/json
 {
     "name": "DaviCarolinad",
     "email": "Carolina@gmail.com",
-    "userType": "admin"
+    "userType": "admin",
+    "key": "123456"
 }
 
-
-    
-###  UPDATE USER BY ID
+### UPDATE A USER 
 
 PATCH  http://localhost:3000/users/5f946ab4fa595a9bebfe54cc
 Content-Type: application/json
 
 {
-    "name": "David John",
+    "name": "David",
     "email": "david@gmail.com",
     "userType": "admin@gmail.com"
 }
-
-
-### DELETE BY ID
-
-DELETE http://localhost:3000/users/5f946ab4fa595a9bebfe54cc

@@ -4,6 +4,7 @@ const usertSchema = new mongoose.Schema({
 	name: String,
 	email: String,
 	userType: String,
+	key: String,
 	// project_id = {type: mongoose.SchemaTypes.ObjectId, ref: "Issue"}
 });
 

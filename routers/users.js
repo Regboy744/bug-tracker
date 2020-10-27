@@ -1,3 +1,20 @@
+/******************************************************************************************************************
+* Project           : Clouw Based Web Application CCT College Dublin
+*
+* Program name      : Bug-Tracker
+*
+* Author            : Gilberto Rodrigues de Carvalho Junior
+*
+* Register:         : 2020090
+*
+* Date created      : 26/10/2020
+*
+* Purpose           : Learn the basic foundation of a Rest API development.
+*
+* Revision History  :  V1*
+*
+|******************************************************************************************************************/
+
 const express = require("express");
 const router = express.Router();
 const Users = require("../models/users");
@@ -14,13 +31,14 @@ const Users = require("../models/users");
 
 */
 
-//Create a new user **********************************************************************************************
+// ADD NEW USER INDIVIDUALLY *************************************************************************************
 
 router.post("/", async (req, res) => {
 	const newUser = Users({
 		name: req.body.name,
 		email: req.body.email,
 		userType: req.body.userType,
+		key: req.body.key,
 		// project_id = req.body.project_id,
 	});
 	try {
@@ -31,7 +49,7 @@ router.post("/", async (req, res) => {
 	}
 });
 
-//Get all ******************************************************************************************************
+// GET ALL USERS *************************************************************************************************
 
 router.get("/", async (req, res) => {
 	try {
@@ -42,14 +60,14 @@ router.get("/", async (req, res) => {
 	}
 });
 
-// Get one user by its ID **************************************************************************************
+// GET AN USER INDIVIDUALLY BY EMAIL *****************************************************************************
 
 router.get("/:email", async (req, res) => {
 	const user = await Users.findOne({ email: req.params.email });
 	res.json(user);
 });
 
-// Update a User ***********************************************************************************************
+// UPDATE A USER **************************************************************************************************
 
 router.patch("/:id", getUsers, async (req, res) => {
 	// First thing check if the req exists
@@ -66,18 +84,7 @@ router.patch("/:id", getUsers, async (req, res) => {
 	}
 });
 
-// Delete a user ************************************************************************************************
-
-router.delete("/:id", getUsers, async (req, res) => {
-	try {
-		await res.user.remove();
-		res.json({ message: "Project deleted" });
-	} catch (error) {
-		res.status(500).json({ message: err.message });
-	}
-});
-
-// It gets the id individualy and check if it exists ************************************************************
+// THE CODE BELLOW CHECK IF THE USER EXIST THEN I USE IT TO UPDATE THE PROJECT ************************************
 
 async function getUsers(req, res, next) {
 	let user;

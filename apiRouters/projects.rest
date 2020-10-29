@@ -1,20 +1,17 @@
 //GET ALL PROJECTS
 GET http://localhost:3000/projects
 
-
-
 ### GET INDIVIDUAL PROJECTS
 GET http://localhost:3000/projects/BOOK
 
-    
 ### ADD A NEW PROJECT INDIVIDUALLY
 POST http://localhost:3000/projects/
 Content-Type: application/json
 
 {
     "slug": "HOTEL",
-	"name": "HOTEL SOFTWARE MANAGEMENT BUG",
-	"descripion": "Control the chaos around solving software bugs. Quickly diagnose problems in your codebase, enjoy faster development cycles and make sure users are having error free experiences."
+	"name": "BOOK SOFTWARE MANAGEMENT BUG",
+	"description": "Control the chaos around solving software bugs. Quickly diagnose problems in your codebase, enjoy faster development cycles and make sure users are having error free experiences."
 }
 
 
@@ -24,7 +21,7 @@ Content-Type: application/json
 // It is not possible to change the slug because it must be unique
 
 {
-   "name": "BOOK SOFTWARE MANAGEMENT BUG",
-   "descripion": "Control the chaos around solving software bugs. Quickly diagnose problems in your codebase, enjoy faster development cycles and make sure users are having error free experiences."
+   "name": "BOOK SOFTWARE MANAGEMENT BUG THE BEST",
+   "description": "Control the chaos around solving software bugs. Quickly diagnose problems in your codebase, enjoy faster development cycles and make sure users are having error free experiences."
 }
 

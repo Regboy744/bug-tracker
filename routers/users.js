@@ -18,40 +18,21 @@
 const express = require("express");
 const router = express.Router();
 const Users = require("../models/users");
+const bcrypt = require("bcrypt");
+const verify = require("../auth/verifyToken");
+const { userTypeValidation } = require("../validation/userValidation");
 
-/* 
+// STATUS CODE
 
-         ERRORS CODE
-
-- > 500 Internal Server Error
---> 201 Something was created
---> 200 uccess status response
---> 400 Bad request (Server problem)
-
-
-*/
-
-// ADD NEW USER INDIVIDUALLY *************************************************************************************
-
-router.post("/", async (req, res) => {
-	const newUser = Users({
-		name: req.body.name,
-		email: req.body.email,
-		userType: req.body.userType,
-		key: req.body.key,
-		// project_id = req.body.project_id,
-	});
-	try {
-		const user = await newUser.save();
-		res.status(201).json(user);
-	} catch (error) {
-		res.status(400).json({ message: err.message });
-	}
-});
+// 500 Internal Server Error
+// 201 Something was created
+// 200 uccess status response
+// 400 Bad request (Server problem)
+// 404 Not found
 
 // GET ALL USERS *************************************************************************************************
 
-router.get("/", async (req, res) => {
+router.get("/", verify, async (req, res) => {
 	try {
 		const users = await Users.find();
 		res.json(users);
@@ -62,41 +43,41 @@ router.get("/", async (req, res) => {
 
 // GET AN USER INDIVIDUALLY BY EMAIL *****************************************************************************
 
-router.get("/:email", async (req, res) => {
+router.get("/:email", verify, async (req, res) => {
 	const user = await Users.findOne({ email: req.params.email });
 	res.json(user);
 });
 
 // UPDATE A USER **************************************************************************************************
 
-router.patch("/:email", getUsers, async (req, res) => {
-	// First thing check if the req exists
-	if (req.body.name != null || req.body.userType != null) {
-		res.user.name = req.body.name;
-		res.user.userType = req.body.userType;
-	}
+router.patch("/:email/:password", verify, async (req, res) => {
+	// GET THE RIGTH USER BASED IN HIS EMAIL SENDED BY URL
+	const user = await Users.findOne({ email: req.params.email });
+
+	//	CHECK IF EMAIL SENDED ON THE URL EXISTS
+	if (user == null) return res.status(400).send("Email informed on the URL was not found");
+
+	// VALIDATE THE DATA BEFORE UPDATE
+	const { error } = userTypeValidation(req.body);
+	if (error) return res.status(400).send(error.details[0].message);
+
+	// CHECK IF EMAIL IS ALREADY IN THE DATABASE
+	const emailExist = await Users.findOne({ email: req.body.email });
+	if (emailExist) return res.status(400).send("Email already exists");
+
+	// CHECK PASSOWRD IS CORRECT
+	const validPass = await bcrypt.compare(req.params.password, user.password);
+	if (!validPass) return res.status(400).send("Invalid password");
+
+	// UPDATE USER TYPE
+	user.userType = req.body.userType;
+
 	try {
-		const updateUser = await res.user.save();
-		res.json(updateUser);
+		const updateUser = await user.save();
+		res.send(updateUser);
 	} catch (error) {
 		Response.status(400);
 	}
 });
-
-// THE CODE BELLOW CHECK IF THE USER EXIST THEN I USE IT TO UPDATE THE USER ***************************************
-
-async function getUsers(req, res, next) {
-	let user;
-	try {
-		user = await Users.findOne({ email: req.params.email });
-		if (user == null) {
-			return res.status(404).json({ message: err.message });
-		}
-	} catch (error) {
-		return res.status(500).json({ message: err.message });
-	}
-	res.user = user;
-	next();
-}
 
 module.exports = router;

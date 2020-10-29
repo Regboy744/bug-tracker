@@ -3,7 +3,7 @@ GET http://localhost:3000/issues
 
 ### GET INDIVIDUAL ISSUES
 
-GET http://localhost:3000/issues/BUG_3
+GET http://localhost:3000/issues/BOOK_1
 
 
 ###  ADD A NEW ISSUE TO A PROJECT INDIVIDUALLY
@@ -12,18 +12,18 @@ POST http://localhost:3000/issues/BOOK
 Content-Type: application/json
 
 {	
-	"text": "First Issue on BOOK Project",
-	"description": "Exception 54321",
+	"text": "SeconD Issue on BOOK Project",
+	"description": "Exception 123456",
 	"status": "Open"
 }
 
 ###  UPDATED THE STATUS OF AN ISSUE
 
-PATCH  http://localhost:3000/issues/BUG_1
+PATCH  http://localhost:3000/issues/BOOK_1
 Content-Type: application/json
 
 {	
-	"status": "open"
+	"status": "Open"
 }
 
 

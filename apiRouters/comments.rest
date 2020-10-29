@@ -1,6 +1,6 @@
 ###  CREATE A NEW COMMENT 
 
-POST http://localhost:3000/comments/BUG_1
+POST http://localhost:3000/comments/BOOK_1
 Content-Type: application/json
 
 {

@@ -2,13 +2,37 @@
 
 #### The main route [https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/).
 
+# Register and Login
+
+#### Firt thing first please register yourself on the API
+
+##### DONE: Register new user `{POST}/auth/user/register`
+
+```
+{
+"name": "User_Name",
+"email": "email@cct.com",
+"userType": "Admin",
+"password": "123456"
+}
+```
+
+#### Scond step login with the e-mail and password informed on your subscription
+
+##### DONE: Login `{POST} auth/user/login`
+
+```
+{
+"email": "carvalho@gmail.com",
+"password": "3000185"
+}
+```
+
+##### After logged in a token will be generated "auth-token" please copy this token and paste it on the Postman to open a section and acces the routers
+
 # Rotes
 
 ## Projects
-
-##### DONE: Get all projects `{GET} /projects`
-
-##### DONE: Get individual projects `{GET} /projects/BOOK `
 
 ##### DONE: Add new Projects individually `{POST}/projects/`
 
@@ -16,52 +40,38 @@
 {
 "slug": "BOOK",
 "name": "BOOK SOFTWARE MANAGEMENT BUG",
-"descripion": "Control the chaos around solving software bugs.
+"description": "Control the chaos around solving software bugs.
 Quickly diagnose problems in your codebase, enjoy faster development
 cycles and make sure users are having error free experiences."
 }
 ```
 
-##### DONE: Update a Project `{POST}/projects/BOOK`
+##### DONE: Get all projects `{GET} /projects`
 
-###### It is not possible to change the slug because it must be unique
+##### DONE: Get individual projects `{GET} /projects/{slug} `
+
+##### DONE: Update a Project `{PATCH}/projects/{slug}`
+
+###### It is not possible to change the project slug because it must be unique
 
 ```
 {
-"name": "HOTEL SOFTWARE MANAGEMENT BUG",
-"descripion": "Control the chaos around solving software bugs.
- Quickly diagnose problems in your codebase, enjoy faster development
- cycles and make sure users are having error free experiences."
+"name": "BOOK SOFTWARE MANAGEMENT BUG THE BEST",
+"description": "Control the chaos around solving software bugs. Quickly diagnose problems in your codebase, enjoy faster development cycles and make sure users are having error free experiences."
 }
-
 ```
-
----
 
 ## Users
 
 ##### DONE: Get all users `{GET}/users/ `
 
-##### DONE: Get individual users `{GET}/user_email@gmail.com`
+##### DONE: Get individual users `{GET}/{email}`
 
-##### DONE: Add new users individually ` {POST}/users`
-
-```
-{
-"name": "John",
-"email": "user_email@gmail.com",
-"userType": "admin",
-"key": "123456"
-}
-```
-
-##### DONE: Update a users ` {PATCH}/users/user_email@gmail.com`
+##### DONE: Update a usersType` {PATCH}/users/{email}/{password}`
 
 ```
 {
-"name": "Gilberto",
-"userType": "Admin",
-"key": "741258"
+"userType": "User"
 }
 ```
 
@@ -69,15 +79,7 @@ cycles and make sure users are having error free experiences."
 
 ## Issues
 
-##### DONE: Get all issues (bring comments with it) `{GET}/issues`
-
-##### DONE: Get individual issues `{GET}/issues/BUG_1`
-
-##### DONE Get all issues for a project `{GET}/issues/projects/BOOK`
-
-##### BONUS: Updated the status of an issue `{PATCH}/issues/BUG_1`
-
-##### DONE Add new issues to a project individually `{POST}/issues/BOOK`
+##### DONE Add new issues to a project individually `{POST}/issues/{slug}`
 
 ```
 {
@@ -87,19 +89,33 @@ cycles and make sure users are having error free experiences."
 }
 ```
 
+##### DONE: Get all issues (bring comments with it) `{GET}/issues`
+
+##### DONE: Get individual issues `{GET}/issues/{issueNumber}`
+
+##### DONE Get all issues for a project `{GET}/issues/projects/{slug}`
+
+##### BONUS: Updated the status of an issue `{PATCH}/issues/{issueNumber}`
+
+```
+{
+"status": "Open"
+}
+```
+
 ---
 
 ## Comments
 
-##### DONE Get all comments for an issue `{GET}/comments/BUG_1`
-
-##### DONE Get individual comments for an issue `{GET}/comments/BUG_1/{COMMENT-ID}`
-
-##### DONE Add new comments to an issue `{POST}/comments/BUG_1`
+##### DONE Add new comments to an issue `{POST}/comments/{issueNumber}`
 
 ```
 {
-"comment":"Novo asdfasdfadsf",
-"author":"carvalho.ie18@gmail.com"
+"comment":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+"author":"valid_email@gmail.com"
 }
 ```
+
+##### DONE Get all comments for an issue `{GET}/comments/{issueNumber}`
+
+##### DONE Get individual comments for an issue `{GET}/comments/BUG_1/{comment_Id}`

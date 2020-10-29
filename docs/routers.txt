@@ -30,7 +30,7 @@ DONE Add new issues to a project individually
 
 Comments
 
-Get all comments (optional)
+DONE Get all comments (optional)
 Get all comments for an author (optional)
 DONE Get all comments for an issue
 DONE Get individual comments for an issue

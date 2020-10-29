@@ -32,6 +32,7 @@ const { commentValidation } = require("../validation/commentValidation");
 // 200 uccess status response
 // 400 Bad request (Server problem)
 // 404 Not found
+// 401 Unauthorized
 
 // ADD A NEW  ******************************************************************************************************
 
@@ -87,6 +88,21 @@ router.get("/:issueNumber/:commentId", verify, async (req, res) => {
 			comment = issuesQuery.comments[i];
 		}
 	}
+	res.json(comment);
+});
+
+// GET ALL COMMENTS  *********************************************************************************************
+
+router.get("/", verify, async (req, res) => {
+	const issuesQuery = await Issues.find({});
+
+	let comment = [];
+	for (let i = 0; i < issuesQuery.length; i++) {
+		for (let j = 0; j < issuesQuery[i].comments.length; j++) {
+			comment.push(issuesQuery[i].comments[j]);
+		}
+	}
+
 	res.json(comment);
 });
 

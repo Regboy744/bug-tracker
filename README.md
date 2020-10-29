@@ -120,6 +120,8 @@ cycles and make sure users are having error free experiences."
 
 ##### DONE Get all comments `{GET}/comments`
 
+##### DONE Get all comments for an Author `{GET}/comments/author/{email}`
+
 ##### DONE Get all comments for an issue `{GET}/comments/{issueNumber}`
 
 ##### DONE Get individual comments for an issue `{GET}/comments/{issueNumber}/{comment_Id}`

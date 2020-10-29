@@ -94,7 +94,7 @@ router.get("/", verify, async (req, res) => {
 
 // GET ALL COMMENTS FOR AN AUTHOR *********************************************************************************
 
-router.get("/author/comments/:author", verify, async (req, res) => {
+router.get("/author/:author", verify, async (req, res) => {
 	//	CHECK IF EMAIL SENDED ON THE URL EXISTS
 	const userEmail = await Users.findOne({ email: req.params.author });
 	if (userEmail == null) return res.status(400).send("Author email informed does not exist");

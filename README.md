@@ -30,6 +30,8 @@
 
 ##### After logged in a token will be generated "auth-token" please copy this token and paste it on the Postman to open a section and acces the routers
 
+![alt text](https://www.dropbox.com/s/jri8y1egzqsfxpf/Screenshot%20from%202020-10-29%2003-25-04.png?dl=0)
+
 # Rotes
 
 ## Projects

@@ -14,7 +14,7 @@ const hostname = "0.0.0.0";
 const port = process.env.PORT || 3000;
 
 //Connect to the data base using mogoose.
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Check if we are connected to the data base if not we will have a error showed
 const db = mongoose.connection;

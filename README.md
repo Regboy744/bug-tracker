@@ -17,14 +17,14 @@
 }
 ```
 
-#### Scond step login with the e-mail and password informed on your subscription
+#### SEcond step login with the e-mail and password informed on your subscription
 
 ##### DONE: Login `{POST} auth/user/login`
 
 ```
 {
-"email": "carvalho@gmail.com",
-"password": "3000185"
+"email": "email@cct.com",
+"password": "123456"
 }
 ```
 

@@ -118,4 +118,4 @@ cycles and make sure users are having error free experiences."
 
 ##### DONE Get all comments for an issue `{GET}/comments/{issueNumber}`
 
-##### DONE Get individual comments for an issue `{GET}/comments/BUG_1/{comment_Id}`
+##### DONE Get individual comments for an issue `{GET}/comments/{issueNumber}/{comment_Id}`

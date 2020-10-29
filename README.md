@@ -30,7 +30,7 @@
 
 ##### After logged in a token will be generated "auth-token" please copy this token and paste it on the Postman to open a section and acces the routers
 
-![alt text](https://www.dropbox.com/s/jri8y1egzqsfxpf/Screenshot%20from%202020-10-29%2003-25-04.png?dl=0)
+![alt text](https://ucc991cac85831886b62b4665307.previews.dropboxusercontent.com/p/thumb/AA8ydEDDPjP8R1D7DcxWiGwI0d7Q1lTp58edCvyA5qsIp4Ql4EyvJ9Xtejrf1yQEcl7gGvbPLwMBUdxISfI_bztX1svvS5f_YrY-hX07RxGjAN__DmA7TcQbgeOabpf4GCUeP_o2x-kOysQSr3D4UHtvjaBDpSVNndPs0LSt-cFGpCSaZaWZDW4H4TNKLNLmbOiooy64pHh2V-uOjpMXZfrbxMOsAn-66Zp9xYY6GxohUGVWmSGtFe-wmkToICJTISAM4nweF0LbD1oegiRrdQ-yHVEliCD1bdtkkZe6vUmZFxxd8NRRDoRat9i9kVGIs3OX3WKP6VdYoOIg8bg6FhvCOEQJBgtJabSnborHf0sB8Vo5o6Vz98zb-tQYw8N3qjoTIutlkpLFLKlU4tSsqnht/p.png?fv_content=true&size_mode=5)
 
 # Rotes
 

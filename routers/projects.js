@@ -30,6 +30,7 @@ const { projectValidation, projectUpdateValidation } = require("../validation/pr
 // 200 uccess status response
 // 400 Bad request (Server problem)
 // 404 Not found
+// 401 Unauthorized
 
 //ADD A NEW PROJECT INDIVIDUALLY  *********************************************************************************
 

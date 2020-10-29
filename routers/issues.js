@@ -31,6 +31,7 @@ const { issueValidation, issueUpdateValidation } = require("../validation/issueV
 // 200 uccess status response
 // 400 Bad request (Server problem)
 // 404 Not found
+// 401 Unauthorized
 
 // ADD A NEW ISSUE TO A PROJECT INDIVIDUALLY *****************************************************************
 

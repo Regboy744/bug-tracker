@@ -17,6 +17,8 @@
 *
 |******************************************************************************************************************/
 
+// THIS IS THE MIDDLEWARE WICH WILL VERIFY THE TOKEN THAT WAS GENERATED WHEN LOGGED IN
+
 const jwt = require("jsonwebtoken");
 
 module.exports = function (req, res, next) {

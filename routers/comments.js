@@ -1,5 +1,5 @@
 /******************************************************************************************************************
-* Project           : Clouw Based Web Application CCT College Dublin
+* Project           : Cloud Based Web Application CCT College Dublin
 *
 * Program name      : Bug-Tracker
 *
@@ -37,6 +37,7 @@ const { commentValidation } = require("../validation/commentValidation");
 // ADD A NEW  ******************************************************************************************************
 
 router.post("/:issueNumber", verify, async (req, res, next) => {
+	console.log(req.params.issueNumber);
 	// VALIDATE THE DATA BEFORE UPDATE
 	const { error } = commentValidation(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
@@ -72,23 +73,8 @@ router.post("/:issueNumber", verify, async (req, res, next) => {
 // GET COMMENTS BY ISSUE *******************************************************************************************
 
 router.get("/:issueNumber", verify, async (req, res) => {
-	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
-	res.json(issuesQuery.comments);
-});
-
-// GET A SPECIFIC COMMENT BY ISSUE AND COMMENT ID *****************************************************************
-
-router.get("/:issueNumber/:commentId", verify, async (req, res) => {
-	const issuesQuery = await Issues.findOne({ issueNumber: req.params.issueNumber });
-	let comment;
-	for (let i = 0; i < issuesQuery.comments.length; i++) {
-		const commentId = issuesQuery.comments[i]._id;
-
-		if (commentId == req.params.commentId) {
-			comment = issuesQuery.comments[i];
-		}
-	}
-	res.json(comment);
+	const allIssues = await Issues.findOne({ issueNumber: req.params.issueNumber });
+	res.json(allIssues.comments);
 });
 
 // GET ALL COMMENTS  *********************************************************************************************
@@ -100,6 +86,30 @@ router.get("/", verify, async (req, res) => {
 	for (let i = 0; i < issuesQuery.length; i++) {
 		for (let j = 0; j < issuesQuery[i].comments.length; j++) {
 			comment.push(issuesQuery[i].comments[j]);
+		}
+	}
+
+	res.json(comment);
+});
+
+// GET ALL COMMENTS FOR AN AUTHOR *********************************************************************************
+
+router.get("/author/comments/:author", verify, async (req, res) => {
+	//	CHECK IF EMAIL SENDED ON THE URL EXISTS
+	const userEmail = await Users.findOne({ email: req.params.author });
+	if (userEmail == null) return res.status(400).send("Author email informed does not exist");
+
+	const issuesQuery = await Issues.find({});
+
+	let comment = [];
+
+	for (let i = 0; i < issuesQuery.length; i++) {
+		for (let j = 0; j < issuesQuery[i].comments.length; j++) {
+			let author = issuesQuery[i].comments[j].author;
+
+			if (author === req.params.author) {
+				comment.push({ Comment: issuesQuery[i].comments[j] });
+			}
 		}
 	}
 

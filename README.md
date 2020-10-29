@@ -4,7 +4,7 @@
 
 # Register and Login
 
-#### Firt thing first please register yourself on the API
+#### First thing first please register yourself on the API
 
 ##### DONE: Register new user `{POST}/auth/user/register`
 

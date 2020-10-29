@@ -20,7 +20,7 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = function (req, res, next) {
-	const token = req.header("auth-token");
+	const token = req.header("x-api-key");
 	if (!token) return res.status(401).send("Acces denied. Please login fisrt");
 
 	try {

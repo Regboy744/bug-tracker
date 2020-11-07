@@ -172,6 +172,10 @@ cycles and make sure users are having error free experiences."
 
 ##### DONE Get individual comments for an issue `{GET}/comments/{issueNumber}/{comment_Id}`
 
+# Status
+
+Project is: in progress.
+
 # Contact
 
 Created by Gilberto Junior carvalho.ie@gmail.com

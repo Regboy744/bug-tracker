@@ -1,11 +1,11 @@
 # Bug-tracker
 
-# table of Content
+# Table of Content
 
 1. [The main route](#the-main-route)
 2. [Register and Login](#register-and-login)
 
-#### The main route [https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/).
+#### The main route [https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/).{the-main-rout}
 
 # Register and Login
 

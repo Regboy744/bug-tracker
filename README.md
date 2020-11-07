@@ -17,7 +17,7 @@ It is an API where we can register the bugs we come across while developing a pr
 
 ### Clone The Repo
 
-###### git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
+git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
 
 # The main route
 

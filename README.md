@@ -17,7 +17,7 @@
 
 ### Clone The Repo
 
-#### git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
+###### git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
 
 # The main route
 

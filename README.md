@@ -81,7 +81,7 @@ You will not be able to duplicate users (based on email)
 }
 ```
 
-After logged in a token will be generated "auth-token" please copy this token and paste it on the Postman to open a section and acces the routers
+After logged in a token will be generated "x-api-key" please copy this token and paste it on the Postman to open a section and acces the routers
 
 ![alt text](https://raw.githubusercontent.com/Regboy744/bug-tracker/main/images/Screenshot%20from%202020-10-29%2003-25-04.png)
 

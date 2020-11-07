@@ -11,7 +11,7 @@
 
 # What this project does
 
-#### It is an API where we can register the bugs we come across while developing a program.
+It is an API where we can register the bugs we come across while developing a program.
 
 # Getting Set Up
 

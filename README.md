@@ -29,6 +29,10 @@ git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
 - "mongoose": "^5.10.10",
 - "nodemon": "^2.0.6"
 
+### Running app
+
+- "main": "server.js",
+
 # The main route
 
 [https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/).

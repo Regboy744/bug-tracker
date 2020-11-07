@@ -2,12 +2,17 @@
 
 # Table of Content
 
-1. [The main route](#the-main-route)
-2. [Register and Login](#register-and-login)
-3. [Projects Routes](#projects)
-4. [Users Routes](#users)
-5. [Issues Routes](#issues)
-6. [Comments Routes](#comments)
+- [What this project does](#What-this-project-does)
+- [Getting Set Up](#Getting-Set-Up)
+- [Technologies used](#Technologies-used)
+- [The main route](#the-main-route)
+- [Register and Login](#register-and-login)
+- [Projects Routes](#projects)
+- [Users Routes](#users)
+- [Issues Routes](#issues)
+- [Comments Routes](#comments)
+- [Status](#Status)
+- [Contact](#Contact)
 
 # What this project does
 

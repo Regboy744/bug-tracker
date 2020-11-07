@@ -17,7 +17,7 @@ It is an API where we can register the bugs we come across while developing a pr
 
 ### Clone The Repo
 
-git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
+git clone https://github.com/Regboy744/bug-tracker.git
 
 ### Install dependences
 
@@ -32,6 +32,17 @@ git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
 ### Running app
 
 - "main": "server.js",
+
+# Technologies used
+
+In this project we have used:
+
+- nodeJs.
+- Mongo Db.
+- VsCode.
+- Java Script.
+- Github.
+- Heroku.
 
 # The main route
 

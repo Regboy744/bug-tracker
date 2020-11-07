@@ -40,7 +40,7 @@ git clone https://github.com/Regboy744/bug-tracker.git
 
 # Technologies used
 
-In this project we have used:
+In this project I have used:
 
 - nodeJs.
 - Mongo Db.

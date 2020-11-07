@@ -73,23 +73,31 @@ router.post("/:issueNumber", verify, async (req, res, next) => {
 // GET COMMENTS BY ISSUE *******************************************************************************************
 
 router.get("/:issueNumber", verify, async (req, res) => {
-	const allIssues = await Issues.findOne({ issueNumber: req.params.issueNumber });
-	res.json(allIssues.comments);
+	try {
+		const allIssues = await Issues.findOne({ issueNumber: req.params.issueNumber });
+		res.json(allIssues.comments);
+	} catch (error) {
+		return res.status(500).json(error.message);
+	}
 });
 
 // GET ALL COMMENTS  *********************************************************************************************
 
 router.get("/", verify, async (req, res) => {
-	const issuesQuery = await Issues.find({});
+	try {
+		const issuesQuery = await Issues.find({});
 
-	let comment = [];
-	for (let i = 0; i < issuesQuery.length; i++) {
-		for (let j = 0; j < issuesQuery[i].comments.length; j++) {
-			comment.push(issuesQuery[i].comments[j]);
+		let comment = [];
+		for (let i = 0; i < issuesQuery.length; i++) {
+			for (let j = 0; j < issuesQuery[i].comments.length; j++) {
+				comment.push(issuesQuery[i].comments[j]);
+			}
 		}
-	}
 
-	res.json(comment);
+		res.json(comment);
+	} catch (error) {
+		return res.status(500).json(error.message);
+	}
 });
 
 // GET ALL COMMENTS FOR AN AUTHOR *********************************************************************************

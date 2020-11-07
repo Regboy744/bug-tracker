@@ -7,7 +7,7 @@
 
 # The main route
 
-[https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/).{the-main-rout}
+[https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/)
 
 # Register and Login
 

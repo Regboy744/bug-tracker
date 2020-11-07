@@ -9,6 +9,10 @@
 5. [Issues Routes](#issues)
 6. [Comments Routes](#comments)
 
+# What this project does
+
+#### It is an API where we can register the bugs we come across while developing a program.
+
 # The main route
 
 [https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/).

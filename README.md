@@ -19,6 +19,16 @@ It is an API where we can register the bugs we come across while developing a pr
 
 git clone https://github.com/ThomasMcDonnell/dj_flat_share.git
 
+### Install dependences
+
+"@hapi/joi": "^15.0.3",
+"bcrypt": "^5.0.0",
+"dotenv": "^8.2.0",
+"express": "^4.17.1",
+"jsonwebtoken": "^8.5.1",
+"mongoose": "^5.10.10",
+"nodemon": "^2.0.6"
+
 # The main route
 
 [https://bugs-tracker.herokuapp.com/](https://bugs-tracker.herokuapp.com/).

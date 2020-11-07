@@ -4,6 +4,10 @@
 
 1. [The main route](#the-main-route)
 2. [Register and Login](#register-and-login)
+3. [Projects Routes](#projects)
+4. [Users Routes](#users)
+5. [Issues Routes](#issues)
+6. [Comments Routes](#comments)
 
 # The main route
 

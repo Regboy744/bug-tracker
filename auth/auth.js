@@ -33,51 +33,55 @@ const { registerValidation, loginValidation } = require("../validation/userValid
 // ADD NEW USER INDIVIDUALLY *************************************************************************************
 
 router.post("/register", async (req, res) => {
-	// LETS VALIDATE THE DATA BEFORE CREATE A NEW USER
-	const { error } = registerValidation(req.body);
-	if (error) return res.status(400).send(error.details[0].message);
+  // LETS VALIDATE THE DATA BEFORE CREATE A NEW USER
+  const { error } = registerValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
-	// CHECK IF EMAIL IS ALREADY IN THE DATABASE
-	const emailExist = await User.findOne({ email: req.body.email });
-	if (emailExist) return res.status(400).send("Email already exists");
+  // CHECK IF EMAIL IS ALREADY IN THE DATABASE
+  const emailExist = await User.findOne({ email: req.body.email });
+  if (emailExist) return res.status(400).send("Email already exists");
 
-	// HASH PASSWORDS
-	const salt = await bcrypt.genSalt(10);
-	const hashedPassord = await bcrypt.hash(req.body.password, salt);
+  // HASH PASSWORDS
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassord = await bcrypt.hash(req.body.password, salt);
 
-	// CREATE A NEW USER
-	const user = new User({
-		name: req.body.name,
-		email: req.body.email,
-		userType: req.body.userType,
-		password: hashedPassord,
-	});
-	try {
-		const saveUser = await user.save();
-		res.send(saveUser);
-	} catch (error) {
-		res.status(400).send(err);
-	}
+  // CREATE A NEW USER
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    userType: req.body.userType,
+    password: hashedPassord,
+  });
+  try {
+    const saveUser = await user.save();
+    res.send(saveUser);
+  } catch (error) {
+    res.status(400).send(err);
+  }
 });
 
 // LOGIN  *******************************************************************************************************
 
 router.post("/login", async (req, res) => {
-	// LETS VALIDATE THE DATA BEFORE LOGIN
-	const { error } = loginValidation(req.body);
-	if (error) return res.status(400).send(error.details[0].message);
+  try {
+    // LETS VALIDATE THE DATA BEFORE LOGIN
+    const { error } = loginValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
-	// CHECK IF EMAIL IS ALREADY IN THE DATABASE
-	const user = await User.findOne({ email: req.body.email });
-	if (!user) return res.status(400).send("Email not found");
+    // CHECK IF EMAIL IS ALREADY IN THE DATABASE
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) return res.status(400).send("Email not found");
 
-	// CHECK PASSOWRD IS CORRECT
-	const validPass = await bcrypt.compare(req.body.password, user.password);
-	if (!validPass) return res.status(400).send("Invalid password");
+    // CHECK PASSOWRD IS CORRECT
+    const validPass = await bcrypt.compare(req.body.password, user.password);
+    if (!validPass) return res.status(400).send("Invalid password");
 
-	//CREATE AND ASIGN A TOKEN
-	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRECT);
-	res.header("x-api-key", token).send(token);
+    //CREATE AND ASIGN A TOKEN
+    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRECT);
+    res.header("x-api-key", token).send(token);
+  } catch (error) {
+    res.status(400).send(err);
+  }
 });
 
 module.exports = router;

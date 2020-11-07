@@ -59,6 +59,8 @@ In this project I have used:
 
 ##### DONE: Register new user `{POST}/auth/user/register`
 
+You will not be able to duplicate users (based on email)
+
 ```
 {
 "name": "User_Name",
@@ -88,6 +90,8 @@ In this project I have used:
 ## Projects
 
 ##### DONE: Add new Projects individually `{POST}/projects/`
+
+You will not be able to duplicate projects based on SLUG
 
 ```
 {
